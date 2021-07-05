@@ -4,7 +4,7 @@ const axios = require("axios");
 const cors = require("cors");
 const path = require('path');
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, '/build')));
@@ -70,6 +70,7 @@ app.post("/meeting", async (req, res) => {
     },
     data: {
       title: title,
+      presetName: Appointment,
     },
   })
     .then((response) => {
@@ -83,6 +84,6 @@ app.get('*', (req,res) =>{
   res.sendFile(path.join(__dirname+'/build/index.html'));
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
   console.log(`App listening at ${port} port`);
 });
