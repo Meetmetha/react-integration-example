@@ -83,6 +83,6 @@ app.get('*', (req,res) =>{
   res.sendFile(path.join(__dirname+'/build/index.html'));
 });
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log(`App listening at ${port} port`);
 });
